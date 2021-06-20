@@ -21,7 +21,7 @@ client.registry
 
 client.once('ready', () => {
   // eslint-disable-next-line no-console
-  console.log('Ever Ready');
+  console.log('The Bot is ready to take some commands');
   client.user?.setActivity('with Commando');
 });
 
