@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 import winston from 'winston';
+import newRelicFormatter from '@newrelic/winston-enricher';
 
 import { CommandoClient } from 'discord.js-commando';
 import path from 'path';
@@ -12,6 +13,10 @@ const client = new CommandoClient({
 });
 
 const logger = winston.createLogger({
+  format: winston.format.combine(
+    winston.format.label({ label: 'test' }),
+    newRelicFormatter()
+  ),
   transports: [new winston.transports.Console()]
 });
 

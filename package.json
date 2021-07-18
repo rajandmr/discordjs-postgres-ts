@@ -21,6 +21,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/newrelic__winston-enricher": "^0.1.1",
     "@types/node": "^15.12.4",
     "@types/prettier": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
@@ -42,6 +43,7 @@
     "*.{ts,js,css,md}": "prettier --write"
   },
   "dependencies": {
+    "@newrelic/winston-enricher": "^1.0.0",
     "discord.js": "^12.5.3",
     "discord.js-commando": "^0.12.3",
     "dotenv": "^10.0.0",
