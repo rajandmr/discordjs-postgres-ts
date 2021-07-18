@@ -1,12 +1,18 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
+import winston from 'winston';
+
 import { CommandoClient } from 'discord.js-commando';
 import path from 'path';
 
 const client = new CommandoClient({
   commandPrefix: '?',
   owner: process.env.OWNER
+});
+
+const logger = winston.createLogger({
+  transports: [new winston.transports.Console()]
 });
 
 client.registry
@@ -21,10 +27,10 @@ client.registry
 
 client.once('ready', () => {
   // eslint-disable-next-line no-console
-  console.log('The Bot is ready to take some commands');
+  logger.info('The Bot is ready to take some commands');
   client.user?.setActivity('with Commando');
 });
 
 // eslint-disable-next-line no-console
-client.on('error', console.error);
+client.on('error', logger.error);
 client.login(process.env.DISCORD_BOT_TOKEN);
