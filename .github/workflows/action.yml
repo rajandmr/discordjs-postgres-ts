@@ -47,7 +47,7 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_DEBUG: false
-          envkey_DISCORD_BOT_TOKEN: ${{secrets.DISCORD_BOT_TOKEN}}
+          envkey_DISCORD_BOT_TOKEN: ${{secrets.BOT_TOKEN_DEV}}
           envkey_OWNER: ${{secrets.OWNER}}
 
       - name: Install the required dependencies & build the project
