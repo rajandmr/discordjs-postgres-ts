@@ -31,7 +31,11 @@ jobs:
         run: npm run lint
       - name: Build the project using postinstall script
         run: npm run postinstall
-      - name: Restart PM2
+      - name: Try Restarting PM2
+        run: pm2 restart npm --name discordbot -- start
+        if: ${{ success() }}
+        run: exit 1
+      - name: Start PM2 process
         run: pm2 start npm --name discordbot -- start
 
   # test:
