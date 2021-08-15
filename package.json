@@ -7,7 +7,7 @@
     "dev": "nodemon",
     "build": "tsc",
     "postinstall": "npm run build",
-    "start": "node build/server.js",
+    "start": "node dist/server.js",
     "lint": "npx eslint src"
   },
   "nodemonConfig": {
