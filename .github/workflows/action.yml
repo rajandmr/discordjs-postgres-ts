@@ -28,16 +28,13 @@ jobs:
       - name: Install the required dependencies & build the project
         run: npm i
 
-    build:
       steps:
         - name: Build the project using postinstall script
           run: npm run postinstall
 
-    lint:
       steps:
         - name: test the linting errors
           run: npm run lint
-    restart:
       steps:
         - name: Restart PM2
           run: pm2 start npm --name discordbot -- start
