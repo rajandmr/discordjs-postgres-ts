@@ -17,6 +17,6 @@ export default class FlipCoinCommand extends Command {
   public async run(message: CommandoMessage): Promise<Message> {
     // Generates a random number 0 or 1.
     const coin = Math.round(Math.random());
-    return message.say(coin ? 'Heads, YAY' : 'Tails, NAY!');
+    return message.say(coin ? 'Head!' : 'Tails!');
   }
 }
