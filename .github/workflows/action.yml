@@ -6,12 +6,28 @@ on:
 
 jobs:
   build:
-  runs-on: self-hosted
+    runs-on: self-hosted
 
-  strategy:
-    - name: Install the required dependencies & build the project
-      run: npm i
-    - name: Build the project using postinstall script
-      run: npm run postinstall
-    - name: Restart PM2
-      run: pm2 start npm --name discordbot -- start
+    strategy:
+      matrix:
+        node-versions: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_DEBUG: false
+          envkey_DISCORD_BOT_TOKEN: ${{secrets.DISCORD_BOT_TOKEN}}
+          envkey_OWNER: ${{secrets.OWNER}}
+
+      - name: Install the required dependencies & build the project
+        run: npm i
+      - name: Build the project using postinstall script
+        run: npm run postinstall
+      - name: Restart PM2
+        run: pm2 start npm --name discordbot -- start
