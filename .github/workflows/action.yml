@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  install:
     runs-on: self-hosted
 
     strategy:
@@ -27,7 +27,17 @@ jobs:
 
       - name: Install the required dependencies & build the project
         run: npm i
-      - name: Build the project using postinstall script
-        run: npm run postinstall
-      - name: Restart PM2
-        run: pm2 start npm --name discordbot -- start
+
+    build:
+      steps:
+        - name: Build the project using postinstall script
+          run: npm run postinstall
+
+    lint:
+      steps:
+        - name: test the linting errors
+          run: npm run lint
+    restart:
+      steps:
+        - name: Restart PM2
+          run: pm2 start npm --name discordbot -- start
