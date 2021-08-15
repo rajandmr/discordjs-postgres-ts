@@ -34,23 +34,23 @@ jobs:
       - name: Restart PM2
         run: pm2 start npm --name discordbot -- start
 
-  test:
-    runs-on: ubuntu-latest
+  # test:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14.x
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_DEBUG: false
-          envkey_DISCORD_BOT_TOKEN: ${{secrets.BOT_TOKEN_DEV}}
-          envkey_OWNER: ${{secrets.OWNER}}
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: 14.x
+  #     - name: Make envfile
+  #       uses: SpicyPizza/create-envfile@v1
+  #       with:
+  #         envkey_DEBUG: false
+  #         envkey_DISCORD_BOT_TOKEN: ${{secrets.BOT_TOKEN_DEV}}
+  #         envkey_OWNER: ${{secrets.OWNER}}
 
-      - name: Install the required dependencies & build the project
-        run: npm i
-      - name: Run lint
-        run: npm run lint
+  #     - name: Install the required dependencies & build the project
+  #       run: npm i
+  #     - name: Run lint
+  #       run: npm run lint
