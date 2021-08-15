@@ -27,6 +27,8 @@ jobs:
 
       - name: Install the required dependencies & build the project
         run: npm i
+      - name: Run lint
+        run: npm run lint
       - name: Build the project using postinstall script
         run: npm run postinstall
       - name: Restart PM2
