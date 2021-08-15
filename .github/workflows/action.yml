@@ -32,7 +32,7 @@ jobs:
       - name: Build the project using postinstall script
         run: npm run postinstall
       - name: Restart PM2
-        run: pm2 restart npm --name discordbot -- start
+        run: pm2 start npm --name discordbot -- start
 
   # test:
   #   runs-on: ubuntu-latest
