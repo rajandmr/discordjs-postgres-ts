@@ -33,6 +33,7 @@ jobs:
         run: npm run postinstall
       - name: Try Restarting PM2
         run: pm2 restart npm --name discordbot -- start
+      - name: if the previous step succeeds, just exit
         if: ${{ success() }}
         run: exit 1
       - name: Start PM2 process
